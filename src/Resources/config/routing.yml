@@ -1,0 +1,6 @@
+# Translator routing
+
+ifraktal_translator_routes:
+    resource: "@IfraktalTranslatorBundle/Controller/"
+    type:     annotation
+    prefix:   /translator
