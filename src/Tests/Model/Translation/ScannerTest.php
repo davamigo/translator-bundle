@@ -1,19 +1,19 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Tests\Model\Translation;
+namespace Davamigo\TranslatorBundle\Tests\Model\Translation;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Scanner;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
-use Ifraktal\TranslatorBundle\Tests\IfraktalTestCase;
+use Davamigo\TranslatorBundle\Model\Translator\Scanner;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Tests\BaseTestCase;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Class ScannerTest
  *
- * @package Ifraktal\TranslatorBundle\Tests\Model\Translation
+ * @package Davamigo\TranslatorBundle\Tests\Model\Translation
  * @author David Amigo <davamigo@gmail.com>
  */
-class ScannerTest extends IfraktalTestCase
+class ScannerTest extends BaseTestCase
 {
     /** @var string */
     protected $testDir;
@@ -58,7 +58,7 @@ class ScannerTest extends IfraktalTestCase
 
         // Configure the test
         $scanner = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Scanner')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Scanner')
             ->setConstructorArgs(array($this->kernelMock))
             ->setMethods(array('scanBundle'))
             ->getMock();
@@ -83,7 +83,7 @@ class ScannerTest extends IfraktalTestCase
     {
         // Configure the test
         $scanner = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Scanner')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Scanner')
             ->setConstructorArgs(array($this->kernelMock))
             ->setMethods(array('realPath', 'isDir', 'isFile', 'scanDir', 'scanFile'))
             ->getMock();
@@ -141,7 +141,7 @@ class ScannerTest extends IfraktalTestCase
     {
         // Configure the test
         $scanner = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Scanner')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Scanner')
             ->setConstructorArgs(array($this->kernelMock))
             ->setMethods(array('getFileLoader'))
             ->getMock();
@@ -221,7 +221,7 @@ class ScannerTest extends IfraktalTestCase
     public function testAddFileLoaderThrowsAnException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $scanner = new Scanner($this->kernelMock);
@@ -267,7 +267,7 @@ class ScannerTest extends IfraktalTestCase
     public function testGetFileLoaderThrowsInvalidArgumentException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $scanner = new Scanner($this->kernelMock);
@@ -280,7 +280,7 @@ class ScannerTest extends IfraktalTestCase
     public function testGetFileLoaderThrowsNotImplementedException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\NotImplementedException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\NotImplementedException');
 
         // Run the test
         $scanner = new Scanner($this->kernelMock);
@@ -293,7 +293,7 @@ class ScannerTest extends IfraktalTestCase
     public function testGetFileLoaderThrowsInvalidClassException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidClassException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidClassException');
 
         // Run the test
         $scanner = new Scanner($this->kernelMock);

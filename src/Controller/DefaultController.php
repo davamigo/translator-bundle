@@ -1,9 +1,9 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Controller;
+namespace Davamigo\TranslatorBundle\Controller;
 
-use Ifraktal\TranslatorBundle\Form\SaveForm;
-use Ifraktal\TranslatorBundle\Model\Translator\FileCreatorInterface;
+use Davamigo\TranslatorBundle\Form\SaveForm;
+use Davamigo\TranslatorBundle\Model\Translator\FileCreatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -17,14 +17,14 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class DefaultController
  *
- * @package Ifraktal\TranslatorBundle\Controller
+ * @package Davamigo\TranslatorBundle\Controller
  * @author David Amigo <davamigo@gmail.com>
  * @Security("has_role('ROLE_ADMIN')")
  */
 class DefaultController extends Controller
 {
     /** Translation session key */
-    const SESSION_KEY = 'ifraktal.translators';
+    const SESSION_KEY = 'davamigo.translators';
 
     /**
      * List of all of the resources and translations in the app
@@ -33,12 +33,12 @@ class DefaultController extends Controller
      *
      * @Route("/")
      * @Route("", name="translations_index")
-     * @Template("@IfraktalTranslator/Default/index.html.twig")
+     * @Template("@DavamigoTranslator/Default/index.html.twig")
      */
     public function indexAction()
     {
-        $storage = $this->get('ifraktal.translator.storage.session');
-        $scanner = $this->get('ifraktal.translator.scanner');
+        $storage = $this->get('davamigo.translator.storage.session');
+        $scanner = $this->get('davamigo.translator.scanner');
 
         if ($storage->hasValid(static::SESSION_KEY)) {
             $translations = $storage->load(static::SESSION_KEY);
@@ -64,12 +64,12 @@ class DefaultController extends Controller
     {
         $translations = null;
 
-        $storage = $this->get('ifraktal.translator.storage.session');
+        $storage = $this->get('davamigo.translator.storage.session');
         if ($storage->hasValid(static::SESSION_KEY)) {
             $translations = $storage->load(static::SESSION_KEY);
         }
 
-        $excelService = $this->get('ifraktal.translator.exporter.excel');
+        $excelService = $this->get('davamigo.translator.exporter.excel');
         $response = $excelService->export($translations);
 
         return $response;
@@ -86,12 +86,12 @@ class DefaultController extends Controller
     {
         $translations = null;
 
-        $storage = $this->get('ifraktal.translator.storage.session');
+        $storage = $this->get('davamigo.translator.storage.session');
         if ($storage->hasValid(static::SESSION_KEY)) {
             $translations = $storage->load(static::SESSION_KEY);
         }
 
-        $yamlService = $this->get('ifraktal.translator.exporter.yaml');
+        $yamlService = $this->get('davamigo.translator.exporter.yaml');
         $response = $yamlService->export($translations);
 
         return $response;
@@ -108,9 +108,9 @@ class DefaultController extends Controller
     public function importExcelAction(Request $request)
     {
         // Objects
-        $storage = $this->get('ifraktal.translator.storage.session');
-        $scanner = $this->get('ifraktal.translator.scanner');
-        $importer = $this->get('ifraktal.translator.importer.excel');
+        $storage = $this->get('davamigo.translator.storage.session');
+        $scanner = $this->get('davamigo.translator.scanner');
+        $importer = $this->get('davamigo.translator.importer.excel');
         $flashBag = $this->get('session')->getFlashBag();
 
         // Get the files from the request
@@ -163,13 +163,13 @@ class DefaultController extends Controller
      * @return array|RedirectResponse
      *
      * @Route("/save/yaml", name="translations_save_yaml")
-     * @Template("@IfraktalTranslator/Default/form.html.twig")
+     * @Template("@DavamigoTranslator/Default/form.html.twig")
      */
     public function saveYamlAction(Request $request)
     {
         $translations = null;
 
-        $storage = $this->get('ifraktal.translator.storage.session');
+        $storage = $this->get('davamigo.translator.storage.session');
         if ($storage->hasValid(static::SESSION_KEY)) {
             $translations = $storage->load(static::SESSION_KEY);
         }
@@ -267,7 +267,7 @@ class DefaultController extends Controller
                     $formData = $form->getData();
 
                     /** @var FileCreatorInterface $fileCreator */
-                    $fileCreator = $this->get('ifraktal.translator.file_creator.yaml');
+                    $fileCreator = $this->get('davamigo.translator.file_creator.yaml');
 
                     $result = array();
                     $data = array_intersect_key($files, array_flip($formData['files']));
@@ -317,8 +317,8 @@ class DefaultController extends Controller
      */
     public function resetAction()
     {
-        $storage = $this->get('ifraktal.translator.storage.session');
-        $scanner = $this->get('ifraktal.translator.scanner');
+        $storage = $this->get('davamigo.translator.storage.session');
+        $scanner = $this->get('davamigo.translator.scanner');
 
         $translations = $scanner->scan()->sort();
         $storage->save($translations, static::SESSION_KEY);
@@ -338,7 +338,7 @@ class DefaultController extends Controller
         $translations = null;
         $data = array();
 
-        $storage = $this->get('ifraktal.translator.storage.session');
+        $storage = $this->get('davamigo.translator.storage.session');
         if ($storage->hasValid(static::SESSION_KEY)) {
             $translations = $storage->load(static::SESSION_KEY);
         }

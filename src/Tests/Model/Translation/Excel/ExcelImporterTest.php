@@ -1,19 +1,19 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Tests\Model\Translation\Excel;
+namespace Davamigo\TranslatorBundle\Tests\Model\Translation\Excel;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Excel\ExcelImporter;
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
-use Ifraktal\TranslatorBundle\Tests\IfraktalTestCase;
+use Davamigo\TranslatorBundle\Model\Translator\Excel\ExcelImporter;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Tests\BaseTestCase;
 
 /**
  * Class ExcelImporterTest
  *
- * @package Ifraktal\TranslatorBundle\Tests\Model\Translation\Excel
+ * @package Davamigo\TranslatorBundle\Tests\Model\Translation\Excel
  * @author David Amigo <davamigo@gmail.com>
  */
-class ExcelImporterTest extends IfraktalTestCase
+class ExcelImporterTest extends BaseTestCase
 {
     /**
      * Test of the getReadResources() and getNewTranslations() methods
@@ -43,7 +43,7 @@ class ExcelImporterTest extends IfraktalTestCase
     {
         // Create mocks
         $excelImporterMock = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Excel\ExcelImporter')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Excel\ExcelImporter')
             ->setMethods(array('getFileName', 'readExcelFile', 'validateHeader'))
             ->disableOriginalConstructor()
             ->getMock();
@@ -121,7 +121,7 @@ class ExcelImporterTest extends IfraktalTestCase
     {
         // Create mocks
         $excelImporterMock = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Excel\ExcelImporter')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Excel\ExcelImporter')
             ->setMethods(array('getFileName', 'readExcelFile', 'validateHeader'))
             ->disableOriginalConstructor()
             ->getMock();
@@ -147,7 +147,7 @@ class ExcelImporterTest extends IfraktalTestCase
             ->method('validateHeader')
             ->will($this->throwException(new \Exception('some_error')));
 
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException');
 
         // Run the test
         /** @var ExcelImporter $excelImporterMock */
@@ -211,7 +211,7 @@ class ExcelImporterTest extends IfraktalTestCase
             ->method('createPHPExcelObject')
             ->will($this->returnValue(null));
 
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException');
 
         // Run the test
         $importer = new ExcelImporter($phpExcelFactoryMock);
@@ -235,7 +235,7 @@ class ExcelImporterTest extends IfraktalTestCase
             ->method('createPHPExcelObject')
             ->will($this->throwException(new ImporterException('Some error text.')));
 
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException');
 
         // Run the test
         $importer = new ExcelImporter($phpExcelFactoryMock);
@@ -269,7 +269,7 @@ class ExcelImporterTest extends IfraktalTestCase
             ->method('getSheet')
             ->will($this->throwException(new \PHPExcel_Exception('Some error text.')));
 
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException');
 
         // Run the test
         $importer = new ExcelImporter($phpExcelFactoryMock);
@@ -303,7 +303,7 @@ class ExcelImporterTest extends IfraktalTestCase
             ->method('getSheet')
             ->will($this->returnValue(null));
 
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException');
 
         // Run the test
         $importer = new ExcelImporter($phpExcelFactoryMock);
@@ -406,7 +406,7 @@ class ExcelImporterTest extends IfraktalTestCase
                 null
             )));
 
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException');
 
         // Run the test
         $importer = new ExcelImporter($phpExcelFactoryMock);
@@ -448,7 +448,7 @@ class ExcelImporterTest extends IfraktalTestCase
                 null
             )));
 
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException');
 
         // Run the test
         $importer = new ExcelImporter($phpExcelFactoryMock);

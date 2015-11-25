@@ -1,17 +1,17 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Tests\Model\Translation;
+namespace Davamigo\TranslatorBundle\Tests\Model\Translation;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
-use Ifraktal\TranslatorBundle\Tests\IfraktalTestCase;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Tests\BaseTestCase;
 
 /**
  * Unit test of the Translations class
  *
- * @package Ifraktal\TranslatorBundle\Tests\Model\Translation
+ * @package Davamigo\TranslatorBundle\Tests\Model\Translation
  * @author David Amigo <davamigo@gmail.com>
  */
-class TranslationsTest extends IfraktalTestCase
+class TranslationsTest extends BaseTestCase
 {
     /**
      * Basic test of add translations.
@@ -68,7 +68,7 @@ class TranslationsTest extends IfraktalTestCase
     public function testAddTranslationsWithNullParamsThrowsAnException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -590,7 +590,7 @@ class TranslationsTest extends IfraktalTestCase
     public function testGetResourcesWithNullParamsThrowsAnException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -670,7 +670,7 @@ class TranslationsTest extends IfraktalTestCase
     public function testGetMessagesWithNullParamsThrowsAnException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -715,7 +715,7 @@ class TranslationsTest extends IfraktalTestCase
     public function testGetTranslationWithNullParamsThrowsAnException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -1072,7 +1072,7 @@ class TranslationsTest extends IfraktalTestCase
         $data = array();
 
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -1090,7 +1090,7 @@ class TranslationsTest extends IfraktalTestCase
         );
 
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -1109,7 +1109,7 @@ class TranslationsTest extends IfraktalTestCase
         );
 
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -1129,7 +1129,7 @@ class TranslationsTest extends IfraktalTestCase
         );
 
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -1150,7 +1150,7 @@ class TranslationsTest extends IfraktalTestCase
         );
 
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();
@@ -1374,7 +1374,7 @@ class TranslationsTest extends IfraktalTestCase
     public function testAddFileWithoutParamsThrowsAnException()
     {
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException');
 
         // Run the test
         $translations = new Translations();

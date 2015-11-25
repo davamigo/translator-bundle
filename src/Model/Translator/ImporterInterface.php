@@ -1,14 +1,14 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator;
+namespace Davamigo\TranslatorBundle\Model\Translator;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Importer interface
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator
+ * @package Davamigo\TranslatorBundle\Model\Translator
  * @author David Amigo <davamigo@gmail.com>
  */
 interface ImporterInterface

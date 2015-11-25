@@ -1,11 +1,11 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator;
+namespace Davamigo\TranslatorBundle\Model\Translator;
 
 /**
  * Translation Scanner interface
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator
+ * @package Davamigo\TranslatorBundle\Model\Translator
  * @author David Amigo <davamigo@gmail.com>
  */
 interface ScannerInterface

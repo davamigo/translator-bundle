@@ -1,15 +1,15 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator\Yaml;
+namespace Davamigo\TranslatorBundle\Model\Translator\Yaml;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\ComponentRequiredException;
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidResourceException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\ComponentRequiredException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidResourceException;
 use Symfony\Component\Yaml\Dumper as YamlDumper;
 
 /**
  * Base class to Yaml services
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator\Yaml
+ * @package Davamigo\TranslatorBundle\Model\Translator\Yaml
  * @author David Amigo <davamigo@gmail.com>
  */
 class YamlBase

@@ -1,6 +1,6 @@
 # Translator routing
 
-ifraktal_translator_routes:
-    resource: "@IfraktalTranslatorBundle/Controller/"
+davamigo_translator_routes:
+    resource: "@DavamigoTranslatorBundle/Controller/"
     type:     annotation
     prefix:   /translator

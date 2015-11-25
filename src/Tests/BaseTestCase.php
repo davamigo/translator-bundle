@@ -1,13 +1,13 @@
 <?php
-namespace Ifraktal\TranslatorBundle\Tests;
+namespace Davamigo\TranslatorBundle\Tests;
 
 /**
- * IfraktalTestCase is the base class for unit tests.
+ * BaseTestCase is the base class for unit tests.
  *
- * @package Ifraktal\TranslatorBundle\Tests
+ * @package Davamigo\TranslatorBundle\Tests
  * @author David Amigo <davamigo@gmail.com>
  */
-class IfraktalTestCase extends \PHPUnit_Framework_TestCase
+class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
     /**
      * Gets the value of a private or protected attribute

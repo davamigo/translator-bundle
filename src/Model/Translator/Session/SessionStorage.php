@@ -1,17 +1,17 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator\Session;
+namespace Davamigo\TranslatorBundle\Model\Translator\Session;
 
-use Ifraktal\TranslatorBundle\Model\Translator\StorageInterface;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Model\Translator\StorageInterface;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Translation Storage - Loads and saves the translation data in the session
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator\Session
+ * @package Davamigo\TranslatorBundle\Model\Translator\Session
  * @author David Amigo <davamigo@gmail.com>
- * @service ifraktal.translator.storage.session
+ * @service davamigo.translator.storage.session
  */
 class SessionStorage implements StorageInterface
 {

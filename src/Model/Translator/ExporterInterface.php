@@ -1,14 +1,14 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator;
+namespace Davamigo\TranslatorBundle\Model\Translator;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\ExporterException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\ExporterException;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Exporter interface
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator
+ * @package Davamigo\TranslatorBundle\Model\Translator
  * @author David Amigo <davamigo@gmail.com>
  */
 interface ExporterInterface

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Tests\Controller;
+namespace Davamigo\TranslatorBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
- * Functional test of the default controller (in the IfraktalTranslatorBundle)
+ * Functional test of the default controller (in the DavamigoTranslatorBundle)
  *
- * @package Ifraktal\TranslatorBundle\Tests\Controller
+ * @package Davamigo\TranslatorBundle\Tests\Controller
  * @author David Amigo <davamigo@gmail.com>
  */
 class DefaultControllerTest extends WebTestCase
@@ -49,7 +49,7 @@ class DefaultControllerTest extends WebTestCase
         $response = $this->client->getResponse();
         $this->assertTrue($response->isSuccessful());
 
-        $this->assertEquals(1, $crawler->filter('html:contains("Symfony Translations - Ifraktal")')->count());
+        $this->assertEquals(1, $crawler->filter('html:contains("Symfony Translations - Davamigo")')->count());
         $this->assertEquals(1, $crawler->filter('a.js-btn-download')->count());
         $this->assertEquals(1, $crawler->filter('a.js-btn-upload')->count());
         $this->assertEquals(1, $crawler->filter('a.js-btn-save')->count());
@@ -93,7 +93,7 @@ class DefaultControllerTest extends WebTestCase
         $this->assertTrue($response->isSuccessful());
 
         $this->assertContains('vnd.ms-excel', $response->headers->get('Content-Type'));
-        $this->assertContains('ifraktal_translator_', $response->headers->get('Content-Disposition'));
+        $this->assertContains('davamigo_translator_', $response->headers->get('Content-Disposition'));
     }
 
     /**
@@ -200,11 +200,11 @@ class DefaultControllerTest extends WebTestCase
      */
     protected function setupSessionData()
     {
-        $scanner = $this->container->get('ifraktal.translator.scanner');
+        $scanner = $this->container->get('davamigo.translator.scanner');
         $translations = $scanner->scan()->sort();
         $this->assertNotNull($translations);
 
-        $storage = $this->container->get('ifraktal.translator.storage.session');
+        $storage = $this->container->get('davamigo.translator.storage.session');
         $result = $storage->save($translations);
         $this->assertTrue($result);
 

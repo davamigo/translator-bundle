@@ -1,19 +1,19 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Tests\Model\Translation\Session;
+namespace Davamigo\TranslatorBundle\Tests\Model\Translation\Session;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Session\SessionStorage;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
-use Ifraktal\TranslatorBundle\Tests\IfraktalTestCase;
+use Davamigo\TranslatorBundle\Model\Translator\Session\SessionStorage;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Tests\BaseTestCase;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class SessionStorageTest
  *
- * @package Ifraktal\TranslatorBundle\Tests\Model\Translation\Session
+ * @package Davamigo\TranslatorBundle\Tests\Model\Translation\Session
  * @author David Amigo <davamigo@gmail.com>
  */
-class SessionStorageTest extends IfraktalTestCase
+class SessionStorageTest extends BaseTestCase
 {
     /** @var SessionInterface */
     protected $sessionMock;
@@ -65,7 +65,7 @@ class SessionStorageTest extends IfraktalTestCase
         $translations = $this->sessionStorage->load();
 
         // Assertions
-        $this->assertInstanceOf('Ifraktal\TranslatorBundle\Model\Translator\Translations', $translations);
+        $this->assertInstanceOf('Davamigo\TranslatorBundle\Model\Translator\Translations', $translations);
     }
 
     /**

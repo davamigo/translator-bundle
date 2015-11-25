@@ -1,13 +1,13 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator;
+namespace Davamigo\TranslatorBundle\Model\Translator;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\FileCreatorException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\FileCreatorException;
 
 /**
  * File creator interface
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator
+ * @package Davamigo\TranslatorBundle\Model\Translator
  * @author David Amigo <davamigo@gmail.com>
  */
 interface FileCreatorInterface

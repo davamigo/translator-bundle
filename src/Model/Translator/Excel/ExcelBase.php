@@ -1,13 +1,13 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator\Excel;
+namespace Davamigo\TranslatorBundle\Model\Translator\Excel;
 
 use Liuggio\ExcelBundle\Factory as PhpExcel;
 
 /**
  * Base class to Excel services
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator\Excel
+ * @package Davamigo\TranslatorBundle\Model\Translator\Excel
  * @author David Amigo <davamigo@gmail.com>
  */
 class ExcelBase

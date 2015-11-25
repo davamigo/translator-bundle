@@ -1,17 +1,17 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Tests\Model\Translation\Yaml;
+namespace Davamigo\TranslatorBundle\Tests\Model\Translation\Yaml;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Yaml\YamlBase;
-use Ifraktal\TranslatorBundle\Tests\IfraktalTestCase;
+use Davamigo\TranslatorBundle\Model\Translator\Yaml\YamlBase;
+use Davamigo\TranslatorBundle\Tests\BaseTestCase;
 
 /**
  * Class YamlBaseTest
  *
- * @package Ifraktal\TranslatorBundle\Tests\Model\Translation\Yaml
+ * @package Davamigo\TranslatorBundle\Tests\Model\Translation\Yaml
  * @author David Amigo <davamigo@gmail.com>
  */
-class YamlBaseTest extends IfraktalTestCase
+class YamlBaseTest extends BaseTestCase
 {
     /**
      * Test the constructor
@@ -83,7 +83,7 @@ class YamlBaseTest extends IfraktalTestCase
         );
 
         // Configure the test
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidResourceException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidResourceException');
 
         // Run the test
         $yaml = new YamlBase();

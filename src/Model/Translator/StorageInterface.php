@@ -1,17 +1,17 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator;
+namespace Davamigo\TranslatorBundle\Model\Translator;
 
 /**
  * Translation Storage interface
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator
+ * @package Davamigo\TranslatorBundle\Model\Translator
  * @author David Amigo <davamigo@gmail.com>
  */
 interface StorageInterface
 {
     /** Default key */
-    const DEFAULT_SESSION_KEY = 'ifraktal.translators';
+    const DEFAULT_SESSION_KEY = 'davamigo.translators';
 
     /**
      * Save the translations

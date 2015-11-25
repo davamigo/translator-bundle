@@ -1,17 +1,17 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator\Yaml;
+namespace Davamigo\TranslatorBundle\Model\Translator\Yaml;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\FileCreatorException;
-use Ifraktal\TranslatorBundle\Model\Translator\FileCreatorInterface;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\FileCreatorException;
+use Davamigo\TranslatorBundle\Model\Translator\FileCreatorInterface;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
 
 /**
  * Service to export translations in yaml format
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator\Yaml
+ * @package Davamigo\TranslatorBundle\Model\Translator\Yaml
  * @author David Amigo <davamigo@gmail.com>
- * @service ifraktal.translator.file-creator.yaml
+ * @service davamigo.translator.file-creator.yaml
  */
 class YamlFileCreator extends YamlBase implements FileCreatorInterface
 {

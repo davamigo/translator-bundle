@@ -1,5 +1,5 @@
 {
-    "name": "ifraktal/translator",
+    "name": "davamigo/translator-bundle",
     "type": "symfony-bundle",
     "description": "A Symfony2 bundle to help you to translate your Symfony2 applications.",
     "keywords": [ "translator", "symfony2" ],
@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ifraktal\\TranslatorBundle\\": "src/"
+            "Davamigo\\TranslatorBundle\\": "src/"
         }
     },
     "extra": {

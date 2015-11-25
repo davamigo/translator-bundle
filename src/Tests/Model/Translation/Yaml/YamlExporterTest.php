@@ -1,18 +1,18 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Tests\Model\Translation\Yaml;
+namespace Davamigo\TranslatorBundle\Tests\Model\Translation\Yaml;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
-use Ifraktal\TranslatorBundle\Model\Translator\Yaml\YamlExporter;
-use Ifraktal\TranslatorBundle\Tests\IfraktalTestCase;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Model\Translator\Yaml\YamlExporter;
+use Davamigo\TranslatorBundle\Tests\BaseTestCase;
 
 /**
  * Class YamlExporterTest
  *
- * @package Ifraktal\TranslatorBundle\Tests\Model\Translation\Yaml
+ * @package Davamigo\TranslatorBundle\Tests\Model\Translation\Yaml
  * @author David Amigo <davamigo@gmail.com>
  */
-class YamlExporterTest extends IfraktalTestCase
+class YamlExporterTest extends BaseTestCase
 {
     /**
      * Test of the export() method
@@ -21,7 +21,7 @@ class YamlExporterTest extends IfraktalTestCase
     {
         // Configure the test
         $yamlExporter = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Yaml\YamlExporter')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Yaml\YamlExporter')
             ->setMethods(array('createResponse'))
             ->getMock();
 
@@ -49,7 +49,7 @@ class YamlExporterTest extends IfraktalTestCase
     {
         // Configure the test
         $yamlExporter = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Yaml\YamlExporter')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Yaml\YamlExporter')
             ->setMethods(array('createResponse'))
             ->getMock();
 
@@ -96,7 +96,7 @@ class YamlExporterTest extends IfraktalTestCase
     {
         // Configure the test
         $yamlExporter = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Yaml\YamlExporter')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Yaml\YamlExporter')
             ->setMethods(array('createResponse'))
             ->getMock();
 

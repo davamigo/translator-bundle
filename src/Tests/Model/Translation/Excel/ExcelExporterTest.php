@@ -1,18 +1,18 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Tests\Model\Translation\Excel;
+namespace Davamigo\TranslatorBundle\Tests\Model\Translation\Excel;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Excel\ExcelExporter;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
-use Ifraktal\TranslatorBundle\Tests\IfraktalTestCase;
+use Davamigo\TranslatorBundle\Model\Translator\Excel\ExcelExporter;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Tests\BaseTestCase;
 
 /**
  * Class ExcelExporterTest
  *
- * @package Ifraktal\TranslatorBundle\Tests\Model\Translation\Excel
+ * @package Davamigo\TranslatorBundle\Tests\Model\Translation\Excel
  * @author David Amigo <davamigo@gmail.com>
  */
-class ExcelExporterTest extends IfraktalTestCase
+class ExcelExporterTest extends BaseTestCase
 {
     /**
      * Test of the export() method
@@ -69,7 +69,7 @@ class ExcelExporterTest extends IfraktalTestCase
             ->getMock();
 
         $exporter = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Excel\ExcelExporter')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Excel\ExcelExporter')
             ->setConstructorArgs(array($phpExcelFactoryMock))
             ->setMethods(array('createResponse'))
             ->getMock();
@@ -160,7 +160,7 @@ class ExcelExporterTest extends IfraktalTestCase
             ->getMock();
 
         $exporter = $this
-            ->getMockBuilder('Ifraktal\TranslatorBundle\Model\Translator\Excel\ExcelExporter')
+            ->getMockBuilder('Davamigo\TranslatorBundle\Model\Translator\Excel\ExcelExporter')
             ->setConstructorArgs(array($phpExcelFactoryMock))
             ->setMethods(array('createResponse'))
             ->getMock();
@@ -171,7 +171,7 @@ class ExcelExporterTest extends IfraktalTestCase
             ->method('createPHPExcelObject')
             ->will($this->returnValue(null));
 
-        $this->setExpectedException('Ifraktal\TranslatorBundle\Model\Translator\Exception\ExporterException');
+        $this->setExpectedException('Davamigo\TranslatorBundle\Model\Translator\Exception\ExporterException');
 
         // Run the test
         $translations = new Translations();

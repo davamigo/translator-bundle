@@ -1,14 +1,14 @@
 {##
- # IfraktalTranslatorBundle:Default:index.html.twig
- # @IfraktalTranslator/Default/index.html.twig
+ # DavamigoTranslatorBundle:Default:index.html.twig
+ # @DavamigoTranslator/Default/index.html.twig
  #
- # translations Ifraktal\TranslatorBundle\Model\Translator\Translations
+ # translations Davamigo\TranslatorBundle\Model\Translator\Translations
  #}
 
-{% extends '@IfraktalTranslator/base.html.twig' %}
+{% extends '@DavamigoTranslator/base.html.twig' %}
 
 {% block title %}
-    Symfony Translations - Ifraktal
+    Symfony Translations - Davamigo
 {% endblock %}
 
 {%- block container_class %}
@@ -150,8 +150,8 @@
 
 {% block page_javascripts %}
     {% javascripts
-        'bundles/ifraktaltranslator/js/modal.js'
-        'bundles/ifraktaltranslator/js/default/index.js'
+        'bundles/davamigotranslator/js/modal.js'
+        'bundles/davamigotranslator/js/default/index.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

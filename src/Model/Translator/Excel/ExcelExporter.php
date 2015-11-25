@@ -1,19 +1,19 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator\Excel;
+namespace Davamigo\TranslatorBundle\Model\Translator\Excel;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\ExporterException;
-use Ifraktal\TranslatorBundle\Model\Translator\ExporterInterface;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\ExporterException;
+use Davamigo\TranslatorBundle\Model\Translator\ExporterInterface;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 /**
  * Service to export translations to an excel file
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator\Excel
+ * @package Davamigo\TranslatorBundle\Model\Translator\Excel
  * @author David Amigo <davamigo@gmail.com>
- * @service ifraktal.translator.exporter.excel
+ * @service davamigo.translator.exporter.excel
  */
 class ExcelExporter extends ExcelBase implements ExporterInterface
 {
@@ -85,7 +85,7 @@ class ExcelExporter extends ExcelBase implements ExporterInterface
         }
 
         if (null == $filename) {
-            $filename = 'ifraktal_translator_' . $now->format('Y-m-d_H-i-s') . '.xls';
+            $filename = 'davamigo_translator_' . $now->format('Y-m-d_H-i-s') . '.xls';
         }
 
         // Create the Excel object
@@ -97,11 +97,11 @@ class ExcelExporter extends ExcelBase implements ExporterInterface
         // Se the Excel properties
         $excelObj
             ->getProperties()
-            ->setTitle('Ifraktal Symfony Translations')
-            ->setDescription('Ifraktal Symfony Translations')
-            ->setCompany('Ifraktal')
-            ->setCreator('Ifraktal')
-            ->setLastModifiedBy('Ifraktal')
+            ->setTitle('Davamigo Symfony Translations')
+            ->setDescription('Davamigo Symfony Translations')
+            ->setCompany('Davamigo')
+            ->setCreator('Davamigo')
+            ->setLastModifiedBy('Davamigo')
             ->setCreated($now->getTimestamp())
             ->setModified($now->getTimestamp());
 

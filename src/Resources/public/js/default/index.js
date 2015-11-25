@@ -1,5 +1,5 @@
 /**
- * @file bundles/ifraktaltranslator/js/default/index.js
+ * @file bundles/davamigotranslator/js/default/index.js
  * @author davamigo@gmail.com
  */
 
@@ -154,7 +154,7 @@
             ev.preventDefault();
 
             var url = $(this).data('url');
-            ModalForm.show(url, 'ifraktal_translator_save_form');
+            ModalForm.show(url, 'davamigo_translator_save_form');
         });
 
 

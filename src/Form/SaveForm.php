@@ -1,6 +1,6 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Form;
+namespace Davamigo\TranslatorBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 /**
  * Form to select the data to save
  *
- * @package Ifraktal\TranslatorBundle\Form
+ * @package Davamigo\TranslatorBundle\Form
  * @author davamigo@gmail.com
  */
 class SaveForm extends AbstractType
@@ -26,7 +26,7 @@ class SaveForm extends AbstractType
      */
     public function getName()
     {
-        return 'ifraktal_translator_save_form';
+        return 'davamigo_translator_save_form';
     }
 
     /**

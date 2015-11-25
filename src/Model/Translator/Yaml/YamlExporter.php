@@ -1,20 +1,20 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator\Yaml;
+namespace Davamigo\TranslatorBundle\Model\Translator\Yaml;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\ExporterException;
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidResourceException;
-use Ifraktal\TranslatorBundle\Model\Translator\ExporterInterface;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\ExporterException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidResourceException;
+use Davamigo\TranslatorBundle\Model\Translator\ExporterInterface;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 /**
  * Service to export translations in yaml format
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator\Yaml
+ * @package Davamigo\TranslatorBundle\Model\Translator\Yaml
  * @author David Amigo <davamigo@gmail.com>
- * @service ifraktal.translator.exporter.yaml
+ * @service davamigo.translator.exporter.yaml
  */
 class YamlExporter extends YamlBase implements ExporterInterface
 {
@@ -53,7 +53,7 @@ class YamlExporter extends YamlBase implements ExporterInterface
         }
 
         if (null == $filename) {
-            $filename = 'ifraktal_translator_' . $now->format('Y-m-d_H-i-s') . '.yml';
+            $filename = 'davamigo_translator_' . $now->format('Y-m-d_H-i-s') . '.yml';
         }
 
         // Create the Yaml file

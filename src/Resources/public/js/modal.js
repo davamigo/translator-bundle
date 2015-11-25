@@ -1,5 +1,5 @@
 /**
- * @file bundles/ifraktaltranslator/jsmodal.js
+ * @file bundles/davamigotranslator/jsmodal.js
  * @author davamigo@gmail.com
  */
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator;
+namespace Davamigo\TranslatorBundle\Model\Translator;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException;
 use Symfony\Component\Config\Resource\ResourceInterface;
 use Symfony\Component\Translation\MessageCatalogueInterface;
 
 /**
  * Scanned translations
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator
+ * @package Davamigo\TranslatorBundle\Model\Translator
  * @author David Amigo <davamigo@gmail.com>
  */
 class Translations

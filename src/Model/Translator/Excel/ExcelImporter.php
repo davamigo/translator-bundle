@@ -1,10 +1,10 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator\Excel;
+namespace Davamigo\TranslatorBundle\Model\Translator\Excel;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\ImporterException;
-use Ifraktal\TranslatorBundle\Model\Translator\ImporterInterface;
-use Ifraktal\TranslatorBundle\Model\Translator\Translations;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException;
+use Davamigo\TranslatorBundle\Model\Translator\ImporterInterface;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
 use Liuggio\ExcelBundle\Factory as PhpExcel;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -12,9 +12,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Service to import translations from an excel file
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator\Excel
+ * @package Davamigo\TranslatorBundle\Model\Translator\Excel
  * @author David Amigo <davamigo@gmail.com>
- * @service ifraktal.translator.importer.excel
+ * @service davamigo.translator.importer.excel
  */
 class ExcelImporter extends ExcelBase implements ImporterInterface
 {

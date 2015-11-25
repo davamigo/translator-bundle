@@ -1,10 +1,10 @@
 <?php
 
-namespace Ifraktal\TranslatorBundle\Model\Translator;
+namespace Davamigo\TranslatorBundle\Model\Translator;
 
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException;
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\InvalidClassException;
-use Ifraktal\TranslatorBundle\Model\Translator\Exception\NotImplementedException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidArgumentException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\InvalidClassException;
+use Davamigo\TranslatorBundle\Model\Translator\Exception\NotImplementedException;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Translation\Loader\LoaderInterface;
@@ -13,9 +13,9 @@ use Symfony\Component\Translation\MessageCatalogueInterface;
 /**
  * Translation Scanner
  *
- * @package Ifraktal\TranslatorBundle\Model\Translator
+ * @package Davamigo\TranslatorBundle\Model\Translator
  * @author David Amigo <davamigo@gmail.com>
- * @service ifraktal.translator.scanner
+ * @service davamigo.translator.scanner
  */
 class Scanner implements ScannerInterface
 {
