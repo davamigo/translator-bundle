@@ -1,0 +1,158 @@
+{##
+ # IfraktalTranslatorBundle:Default:index.html.twig
+ # @IfraktalTranslator/Default/index.html.twig
+ #
+ # translations Ifraktal\TranslatorBundle\Model\Translator\Translations
+ #}
+
+{% extends '@IfraktalTranslator/base.html.twig' %}
+
+{% block title %}
+    Symfony Translations - Ifraktal
+{% endblock %}
+
+{%- block container_class %}
+    container-fluid
+{% endblock -%}
+
+{% block body_content %}
+
+    <div class="row">
+        <div class="col-sm-3 col-xs-12">
+            <div class="form-group">
+                <div class="btn-group">
+                    <div class="btn-group">
+                        <a  href="#"
+                            title="Download"
+                            data-toggle="dropdown"
+                            class="btn btn-default btn-sm dropdown-toggle js-btn-download">
+                            <span class="fa fa-download"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a target="_blank" href="{{ path('translations_export_excel') }}">
+                                    Excel format
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="{{ path('translations_export_yaml') }}">
+                                    Yaml format
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a  href="#"
+                        title="Upload"
+                        class="btn btn-default btn-sm js-btn-upload">
+                        <span class="fa fa-upload"></span>
+                    </a>
+                    <a  href="#"
+                        title="Save"
+                        data-url="{{ path('translations_save_yaml') }}"
+                        class="btn btn-default btn-sm js-btn-save">
+                        <span class="fa fa-save"></span>
+                    </a>
+                    <a  href="{{ path('translations_reset') }}"
+                        title="Reset"
+                        class="btn btn-default btn-sm js-btn-reset">
+                        <span class="fa fa-recycle"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="hide">
+                <form
+                    class="js-files-form"
+                    method="post"
+                    enctype="multipart/form-data"
+                    action="{{ path('translations_import_excel') }}">
+                    <input
+                        type="file"
+                        name="files"
+                        class="hide js-files-input"
+                    />
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-9 col-xs-12 text-right">
+            <div class="form-group">
+                <label>Locales:</label>
+                <div class="btn-group">
+                    {% for locale in translations.locales %}
+                        <a  href="#"
+                            data-locale="{{ locale }}"
+                            data-col-num="{{ 3 + loop.index0 }}"
+                            class="btn btn-default btn-sm js-btn-locale-toggle">
+                            {{- locale -}}
+                        </a>
+                    {% endfor %}
+                    <a  href="#"
+                        title="Add locale"
+                        class="btn btn-default btn-sm js-btn-locale-add">
+                        <span class="fa fa-plus"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table
+                width="100%"
+                data-state-save="true"
+                data-ajax="{{ path('translations_result') }}"
+                class="table table-bordered table-hover table-condensed js-table">
+                <thead>
+                    <tr class="warning">
+                        <td class="js-column-bundle">&nbsp;</td>
+                        <td class="js-column-domain">&nbsp;</td>
+                        <td class="js-column-resource">&nbsp;</td>
+                        {% for locale in translations.locales %}
+                            <td class="js-column-locale-{{ locale }}">&nbsp;</td>
+                        {% endfor %}
+                    </tr>
+                    <tr class="warning">
+
+                        <th data-column-id="bundle"
+                            data-order-data="[0, 1, 2]"
+                            data-filter="select">
+                            Bundle
+                        </th>
+
+                        <th data-column-id="domain"
+                            data-order-data="[1, 0, 2]"
+                            data-filter="select">
+                            Domain
+                        </th>
+
+                        <th data-column-id="resource"
+                            data-order-data="[2, 0, 1]"
+                            data-filter="input">
+                            Resource
+                        </th>
+
+                        {% for locale in translations.locales %}
+                            <th data-column-id="locale-{{ locale }}"
+                                data-order-data="[{{ 3 + loop.index0 }}, 0, 1, 2]"
+                                data-locale="{{ locale }}">
+                                {{ locale }}
+                            </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block page_javascripts %}
+    {% javascripts
+        'bundles/ifraktaltranslator/js/modal.js'
+        'bundles/ifraktaltranslator/js/default/index.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

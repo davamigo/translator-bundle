@@ -1,0 +1,111 @@
+{##
+ # IfraktalTranslatorBundle::base.html.twig
+ # @IfraktalTranslator/base.html.twig
+ #}
+
+<!DOCTYPE html>
+<html lang="{% block lang %}en{% endblock %}">
+    <head>
+        <meta charset="{% block charset %}UTF-8{% endblock %}" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{%- block description %}The description{% endblock -%}">
+        <meta name="author" content="{%- block author %}The author{% endblock -%}">
+        <title>{%- block title %}The title{% endblock -%}</title>
+        {% block stylesheets %}
+            {% block base_stylesheets %}
+                {% stylesheets filter='cssrewrite'
+                    'bundles/ifraktaltranslator/css/bootstrap.min.css'
+                    'bundles/ifraktaltranslator/css/bootstrap-theme.min.css'
+                    'bundles/ifraktaltranslator/css/font-awesome.min.css'
+                    'bundles/ifraktaltranslator/css/jquery.dataTables.min.css'
+                    'bundles/ifraktaltranslator/css/jquery.dataTables.bootstrap.css'
+                    'bundles/ifraktaltranslator/css/jquery.dataTables.fontAwesome.css'
+                %}
+                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+                {% endstylesheets %}
+            {% endblock %}
+            {% block common_stylesheets %}
+            {% endblock %}
+            {% block page_stylesheets %}
+            {% endblock %}
+            {% block extra_stylesheets %}
+            {% endblock %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+
+    <body>
+        {% block body %}
+            <div class="{%- block container_class %}container{% endblock %}">
+                {% block container %}
+
+                    {% block navbar %}
+                        {# No defaullt navbat #}
+                    {% endblock %}
+
+                    {% block heading %}
+                        <div class="page-header">
+                            <h1 class="{% block heading_class %}{% endblock %}">
+                                {% block heading_content %}
+                                    {{- block('title') -}}
+                                {% endblock %}
+                                <small>
+                                    {% block heading_subtitle %}
+                                    {% endblock %}
+                                </small>
+                            </h1>
+                        </div>
+                    {% endblock %}
+
+                    {% block messages %}
+                        {% for type in app.session.flashbag.keys %}
+                            {% for message in app.session.flashbag.get(type) %}
+                                <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {% if type == 'danger' or type == 'warning' %}
+                                        <span class="fa fa-warning text-"></span>
+                                    {% else %}
+                                        <span class="fa fa-info-circle"></span>
+                                    {% endif %}
+                                    &nbsp;
+                                    {{ message | trans | raw }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endblock %}
+
+                    {% block body_content %}
+                        {# No defult body content #}
+                    {% endblock %}
+                {% endblock %}
+            </div>
+
+            {% block footer %}
+                {# No default footer #}
+            {% endblock %}
+
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block base_javascripts %}
+                {% javascripts
+                    'bundles/ifraktaltranslator/js/jquery.min.js'
+                    'bundles/ifraktaltranslator/js/bootstrap.min.js'
+                    'bundles/ifraktaltranslator/js/jquery.dataTables.min.js'
+                    'bundles/ifraktaltranslator/js/jquery.dataTables.bootstrap.min.js'
+                %}
+                <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endblock %}
+            {% block common_javascripts %}
+            {% endblock %}
+            {% block page_javascripts %}
+            {% endblock %}
+            {% block extra_javascripts %}
+            {% endblock %}
+        {% endblock %}
+    </body>
+</html>

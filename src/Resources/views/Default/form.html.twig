@@ -1,0 +1,95 @@
+{##
+ # IfraktalTranslatorBundle:Default:form.html.twig
+ # @IfraktalTranslator/Default/form.html.twig
+ #
+ # form Form
+ #}
+
+{% form_theme form "bootstrap_3_layout.html.twig" %}
+
+<div role="dialog"
+     tabindex="-1"
+     id="{{ form.vars.id }}-modal"
+     class="modal fade js-{{ form.vars.id }}-modal"
+     aria-labelledby="{{ form.vars.id }}-label">
+
+    <div role="document"
+         class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span title="{{ 'str.global.buttons.close' | trans }}" aria-hidden="true">
+                        &times;
+                    </span>
+                </button>
+
+                {% if form.vars.label is not null %}
+                    {% set label = form.vars.label %}
+                {% elseif form._label is defined and form._label.vars.data is not null %}
+                    {% set label = form._label.vars.data %}
+                {% else %}
+                    {% set label = 'Modal' %}
+                {% endif %}
+
+                <h4 class="modal-title" id="{{ form.vars.id }}-label">
+                    {{- label | trans -}}
+                </h4>
+            </div>
+
+            {{ form_start(form, { 'attr': { 'class': 'js-' ~ form.vars.id }}) }}
+
+            {{ form_errors(form) }}
+
+            <div class="modal-body">
+
+                {% if form._errors is defined and form._errors.vars.data is not null %}
+                    {% for message in form._errors.vars.data | split('|') %}
+                        <div class="alert alert-danger" role="alert">
+                            <span class="fa fa-warning"></span>
+                            {{ message | trans }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if form._success is defined and form._success.vars.data is not null %}
+                    {% for message in form._success.vars.data | split('|') %}
+                        <div class="alert alert-success" role="alert">
+                            <span class="fa fa-info-circle"></span>
+                            {{ message | trans }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {%- for child in form %}
+                    {% if child.vars.name != 'submit' %}
+                        {{ form_row(child) }}
+                    {% endif %}
+                {% endfor -%}
+
+                {% if form._info is defined and form._info.vars.data is not null %}
+                    {% for message in form._info.vars.data | split('|') %}
+                        <div class="alert alert-info" role="alert">
+                            <span class="fa fa-info-circle"></span>
+                            {{ message | trans }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {{- 'str.global.buttons.close' | trans -}}
+                </button>
+
+                {% if form.submit is defined %}
+                    {{ form_widget(form.submit, { 'attr': { 'class': 'btn btn-primary' }}) }}
+                {% endif %}
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
