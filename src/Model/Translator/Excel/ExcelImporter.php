@@ -5,7 +5,7 @@ namespace Davamigo\TranslatorBundle\Model\Translator\Excel;
 use Davamigo\TranslatorBundle\Model\Translator\Exception\ImporterException;
 use Davamigo\TranslatorBundle\Model\Translator\ImporterInterface;
 use Davamigo\TranslatorBundle\Model\Translator\Translations;
-use Liuggio\ExcelBundle\Factory as PhpExcel;
+use Liuggio\ExcelBundle\Factory as PhpExcelFactory;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -27,9 +27,9 @@ class ExcelImporter extends ExcelBase implements ImporterInterface
     /**
      * Constructor
      *
-     * @param PhpExcel $phpExcelFactory
+     * @param PhpExcelFactory $phpExcelFactory
      */
-    public function __construct(PhpExcel $phpExcelFactory)
+    public function __construct(PhpExcelFactory $phpExcelFactory)
     {
         parent::__construct($phpExcelFactory);
         $this->newTranslations  = 0;

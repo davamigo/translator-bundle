@@ -2,7 +2,7 @@
 
 namespace Davamigo\TranslatorBundle\Model\Translator\Excel;
 
-use Liuggio\ExcelBundle\Factory as PhpExcel;
+use Liuggio\ExcelBundle\Factory as PhpExcelFactory;
 
 /**
  * Base class to Excel services
@@ -12,7 +12,7 @@ use Liuggio\ExcelBundle\Factory as PhpExcel;
  */
 class ExcelBase
 {
-    /** @var PhpExcel */
+    /** @var PhpExcelFactory */
     protected $phpExcelFactory;
 
     /** Fixed Excel file */
@@ -25,9 +25,9 @@ class ExcelBase
     /**
      * Constructor
      *
-     * @param PhpExcel $phpExcelFactory
+     * @param PhpExcelFactory $phpExcelFactory
      */
-    public function __construct(PhpExcel $phpExcelFactory)
+    public function __construct(PhpExcelFactory $phpExcelFactory)
     {
         $this->phpExcelFactory = $phpExcelFactory;
     }
