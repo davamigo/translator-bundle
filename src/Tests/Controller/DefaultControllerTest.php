@@ -44,7 +44,7 @@ class DefaultControllerTest extends WebTestCase
     {
         $this->logIn();
 
-        $route = $this->router->generate('translations_index');
+        $route = $this->router->generate('translator_index');
         $crawler = $this->client->request('GET', $route);
         $response = $this->client->getResponse();
         $this->assertTrue($response->isSuccessful());
@@ -84,7 +84,7 @@ class DefaultControllerTest extends WebTestCase
          */
 
         ob_start();
-        $route = $this->router->generate('translations_export_excel');
+        $route = $this->router->generate('translator_export_excel');
         $this->client->request('GET', $route);
         $excelContent = ob_get_clean();
         $this->assertNotNull($excelContent);
@@ -104,7 +104,7 @@ class DefaultControllerTest extends WebTestCase
         $this->logIn();
         $this->setupSessionData();
 
-        $route = $this->router->generate('translations_export_yaml');
+        $route = $this->router->generate('translator_export_yaml');
         $this->client->request('GET', $route);
         $response = $this->client->getResponse();
         $this->assertTrue($response->isSuccessful());
@@ -120,7 +120,7 @@ class DefaultControllerTest extends WebTestCase
 
         // Generate an Excel content
         ob_start();
-        $route = $this->router->generate('translations_export_excel');
+        $route = $this->router->generate('translator_export_excel');
         $this->client->request('GET', $route);
         $excelContent = ob_get_clean();
         $this->assertNotNull($excelContent);
@@ -132,10 +132,10 @@ class DefaultControllerTest extends WebTestCase
         $file = new UploadedFile($filename, 'test.xls');
 
         // Call import excel action
-        $route = $this->router->generate('translations_import_excel');
+        $route = $this->router->generate('translator_import_excel');
         $this->client->request('GET', $route, array(), array( $file ));
         $response = $this->client->getResponse();
-        $this->assertTrue($response->isRedirect($this->router->generate('translations_index')));
+        $this->assertTrue($response->isRedirect($this->router->generate('translator_index')));
 
         // Delete the temp file
         unlink($filename);
@@ -148,21 +148,21 @@ class DefaultControllerTest extends WebTestCase
     {
         $this->logIn();
 
-        $route = $this->router->generate('translations_reset');
+        $route = $this->router->generate('translator_reset');
         $this->client->request('GET', $route);
         $response = $this->client->getResponse();
-        $this->assertTrue($response->isRedirect($this->router->generate('translations_index')));
+        $this->assertTrue($response->isRedirect($this->router->generate('translator_index')));
     }
 
     /**
-     * Functional test of results action
+     * Functional test of getData action
      */
-    public function testResultsAction()
+    public function testGetDataAction()
     {
         $this->logIn();
         $this->setupSessionData();
 
-        $route = $this->router->generate('translations_result');
+        $route = $this->router->generate('translator_get_data');
         $this->client->request('GET', $route);
         $response = $this->client->getResponse();
         $this->assertTrue($response->isSuccessful());

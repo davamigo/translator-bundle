@@ -4,7 +4,7 @@ namespace Davamigo\TranslatorBundle\Controller;
 
 use Davamigo\TranslatorBundle\Form\SaveForm;
 use Davamigo\TranslatorBundle\Model\Translator\FileCreatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Davamigo\TranslatorBundle\Model\Translator\Translations;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,18 +13,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 /**
  * Class DefaultController
  *
  * @package Davamigo\TranslatorBundle\Controller
  * @author David Amigo <davamigo@gmail.com>
- * @Security("has_role('ROLE_ADMIN')")
  */
 class DefaultController extends Controller
 {
     /** Translation session key */
-    const SESSION_KEY = 'davamigo.translators';
+    const SESSION_KEY = 'davamigo.translations';
 
     /**
      * List of all of the resources and translations in the app
@@ -32,7 +32,7 @@ class DefaultController extends Controller
      * @return array
      *
      * @Route("/")
-     * @Route("", name="translations_index")
+     * @Route("", name="translator_index")
      * @Template("@DavamigoTranslator/Default/index.html.twig")
      */
     public function indexAction()
@@ -58,7 +58,7 @@ class DefaultController extends Controller
      *
      * @return Response
      *
-     * @Route("/export/excel", name="translations_export_excel")
+     * @Route("/export/excel", name="translator_export_excel")
      */
     public function exportExcelAction()
     {
@@ -80,7 +80,7 @@ class DefaultController extends Controller
      *
      * @return Response
      *
-     * @Route("/export/yaml", name="translations_export_yaml")
+     * @Route("/export/yaml", name="translator_export_yaml")
      */
     public function exportYamlAction()
     {
@@ -103,7 +103,7 @@ class DefaultController extends Controller
      * @param Request $request
      * @return RedirectResponse
      *
-     * @Route("/import/excel", name="translations_import_excel")
+     * @Route("/import/excel", name="translator_import_excel")
      */
     public function importExcelAction(Request $request)
     {
@@ -111,7 +111,12 @@ class DefaultController extends Controller
         $storage = $this->get('davamigo.translator.storage.session');
         $scanner = $this->get('davamigo.translator.scanner');
         $importer = $this->get('davamigo.translator.importer.excel');
+
+        /** @var FlashBag $flashBag */
         $flashBag = $this->get('session')->getFlashBag();
+
+        /** @var Translations $translations */
+        $translations = null;
 
         // Get the files from the request
         $files = $request->files->get('files', null);
@@ -154,19 +159,21 @@ class DefaultController extends Controller
             $flashBag->add('danger', $exc->getMessage());
         }
 
-        return $this->redirectToRoute('translations_index');
+        return $this->redirectToRoute('translator_index');
     }
+
     /**
      * Save new translations (in YAML format)
      *
      * @param Request $request
      * @return array|RedirectResponse
      *
-     * @Route("/save/yaml", name="translations_save_yaml")
+     * @Route("/save/yaml", name="translator_save_yaml")
      * @Template("@DavamigoTranslator/Default/form.html.twig")
      */
     public function saveYamlAction(Request $request)
     {
+        /** @var Translations $translations */
         $translations = null;
 
         $storage = $this->get('davamigo.translator.storage.session');
@@ -205,7 +212,7 @@ class DefaultController extends Controller
                     'bundles'   => $bundles,
                     'domains'   => $domains,
                     'locales'   => $locales,
-                    'action'    => $this->generateUrl('translations_save_yaml')
+                    'action'    => $this->generateUrl('translator_save_yaml')
                 ));
 
                 $form->handleRequest($request);
@@ -230,7 +237,7 @@ class DefaultController extends Controller
                     $form = $this->createForm($formType, $formData, array(
                         'step'      => 2,
                         'files'     => $filesChoices,
-                        'action'    => $this->generateUrl('translations_save_yaml')
+                        'action'    => $this->generateUrl('translator_save_yaml')
                     ));
                 }
                 break;
@@ -259,7 +266,7 @@ class DefaultController extends Controller
                 $form = $this->createForm($formType, $formData, array(
                     'step'      => 2,
                     'files'     => $filesChoices,
-                    'action'    => $this->generateUrl('translations_save_yaml')
+                    'action'    => $this->generateUrl('translator_save_yaml')
                 ));
 
                 $form->handleRequest($request);
@@ -295,7 +302,7 @@ class DefaultController extends Controller
                         $form = $this->createForm($formType, $formData, array(
                             'step'      => 3,
                             'result'    => $result,
-                            'action'    => $this->generateUrl('translations_save_yaml')
+                            'action'    => $this->generateUrl('translator_save_yaml')
                         ));
                     }
 
@@ -313,7 +320,7 @@ class DefaultController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/reset", name="translations_reset",)
+     * @Route("/reset", name="translator_reset",)
      */
     public function resetAction()
     {
@@ -323,7 +330,7 @@ class DefaultController extends Controller
         $translations = $scanner->scan()->sort();
         $storage->save($translations, static::SESSION_KEY);
 
-        return $this->redirectToRoute('translations_index');
+        return $this->redirectToRoute('translator_index');
     }
 
     /**
@@ -331,10 +338,11 @@ class DefaultController extends Controller
      *
      * @return JsonResponse
      *
-     * @Route("/results.json", name="translations_result")
+     * @Route("/getData.json", name="translator_get_data")
      */
-    public function resultsAction()
+    public function getDataAction()
     {
+        /** @var Translations $translations */
         $translations = null;
         $data = array();
 

@@ -30,12 +30,12 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a target="_blank" href="{{ path('translations_export_excel') }}">
+                                <a target="_blank" href="{{ path('translator_export_excel') }}">
                                     Excel format
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="{{ path('translations_export_yaml') }}">
+                                <a target="_blank" href="{{ path('translator_export_yaml') }}">
                                     Yaml format
                                 </a>
                             </li>
@@ -48,11 +48,11 @@
                     </a>
                     <a  href="#"
                         title="Save"
-                        data-url="{{ path('translations_save_yaml') }}"
+                        data-url="{{ path('translator_save_yaml') }}"
                         class="btn btn-default btn-sm js-btn-save">
                         <span class="fa fa-save"></span>
                     </a>
-                    <a  href="{{ path('translations_reset') }}"
+                    <a  href="{{ path('translator_reset') }}"
                         title="Reset"
                         class="btn btn-default btn-sm js-btn-reset">
                         <span class="fa fa-recycle"></span>
@@ -64,7 +64,7 @@
                     class="js-files-form"
                     method="post"
                     enctype="multipart/form-data"
-                    action="{{ path('translations_import_excel') }}">
+                    action="{{ path('translator_import_excel') }}">
                     <input
                         type="file"
                         name="files"
@@ -100,7 +100,7 @@
             <table
                 width="100%"
                 data-state-save="true"
-                data-ajax="{{ path('translations_result') }}"
+                data-ajax="{{ path('translator_get_data') }}"
                 class="table table-bordered table-hover table-condensed js-table">
                 <thead>
                     <tr class="warning">
