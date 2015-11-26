@@ -3,7 +3,7 @@
 namespace Davamigo\TranslatorBundle\Model\Translator;
 
 /**
- * Translation Storage interface
+ * Translation Storage interface - Stores the translation data
  *
  * @package Davamigo\TranslatorBundle\Model\Translator
  * @author David Amigo <davamigo@gmail.com>
@@ -11,7 +11,7 @@ namespace Davamigo\TranslatorBundle\Model\Translator;
 interface StorageInterface
 {
     /** Default key */
-    const DEFAULT_SESSION_KEY = 'davamigo.translators';
+    const DEFAULT_KEY = 'davamigo.translations';
 
     /**
      * Save the translations
@@ -20,7 +20,7 @@ interface StorageInterface
      * @param string       $key
      * @return bool
      */
-    public function save(Translations $translations, $key = self::DEFAULT_SESSION_KEY);
+    public function save(Translations $translations, $key = self::DEFAULT_KEY);
 
     /**
      * Load the translations
@@ -28,7 +28,7 @@ interface StorageInterface
      * @param string $key
      * @return Translations
      */
-    public function load($key = self::DEFAULT_SESSION_KEY);
+    public function load($key = self::DEFAULT_KEY);
 
     /**
      * Return if the translations are saved
@@ -36,7 +36,7 @@ interface StorageInterface
      * @param string $key
      * @return bool
      */
-    public function hasValid($key = self::DEFAULT_SESSION_KEY);
+    public function hasValid($key = self::DEFAULT_KEY);
 
     /**
      * Remove the saved translations
@@ -44,5 +44,5 @@ interface StorageInterface
      * @param string $key
      * @return bool
      */
-    public function reset($key = self::DEFAULT_SESSION_KEY);
+    public function reset($key = self::DEFAULT_KEY);
 }

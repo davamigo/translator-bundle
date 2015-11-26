@@ -7,7 +7,7 @@ use Davamigo\TranslatorBundle\Model\Translator\Translations;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
- * Translation Storage - Loads and saves the translation data in the session
+ * Translation Storage - Stores the translation data in the session
  *
  * @package Davamigo\TranslatorBundle\Model\Translator\Session
  * @author David Amigo <davamigo@gmail.com>
@@ -35,7 +35,7 @@ class SessionStorage implements StorageInterface
      * @param string       $key
      * @return bool
      */
-    public function save(Translations $translations, $key = self::DEFAULT_SESSION_KEY)
+    public function save(Translations $translations, $key = self::DEFAULT_KEY)
     {
         $rawTranslations = $translations->getRawData();
         $this->session->set($key, $rawTranslations);
@@ -49,7 +49,7 @@ class SessionStorage implements StorageInterface
      * @param string $key
      * @return Translations
      */
-    public function load($key = self::DEFAULT_SESSION_KEY)
+    public function load($key = self::DEFAULT_KEY)
     {
         $rawTranslations = $this->session->get($key);
         $translations = new Translations();
@@ -63,7 +63,7 @@ class SessionStorage implements StorageInterface
      * @param string $key
      * @return bool
      */
-    public function hasValid($key = self::DEFAULT_SESSION_KEY)
+    public function hasValid($key = self::DEFAULT_KEY)
     {
         if (!$this->session->has($key)) {
             return false;
@@ -91,7 +91,7 @@ class SessionStorage implements StorageInterface
      * @param string $key
      * @return bool
      */
-    public function reset($key = self::DEFAULT_SESSION_KEY)
+    public function reset($key = self::DEFAULT_KEY)
     {
         $this->session->remove($key);
         return true;
