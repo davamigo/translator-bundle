@@ -33,7 +33,7 @@ class DefaultController extends Controller
      *
      * @Route("/")
      * @Route("", name="translator_index")
-     * @Template("@DavamigoTranslator/Default/index.html.twig")
+     * @Template("DavamigoTranslatorBundle:Default:index.html.twig")
      */
     public function indexAction()
     {
@@ -169,7 +169,7 @@ class DefaultController extends Controller
      * @return array|RedirectResponse
      *
      * @Route("/save/yaml", name="translator_save_yaml")
-     * @Template("@DavamigoTranslator/Default/form.html.twig")
+     * @Template("DavamigoTranslatorBundle:Default:/form.html.twig")
      */
     public function saveYamlAction(Request $request)
     {
