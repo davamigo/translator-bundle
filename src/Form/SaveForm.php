@@ -37,12 +37,13 @@ class SaveForm extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'action'    => null,
-            'bundles'   => array(),
-            'domains'   => array(),
-            'locales'   => array(),
-            'files'     => array(),
-            'result'    => array()
+            'action'                => null,
+            'bundles'               => array(),
+            'domains'               => array(),
+            'locales'               => array(),
+            'files'                 => array(),
+            'result'                => array(),
+            'translation_domain'    => 'DavamigoTranslatorBundle'
         ));
 
         $resolver->setRequired(array(
@@ -142,8 +143,8 @@ class SaveForm extends AbstractType
             '_label',
             'hidden',
             array(
-                'mapped'        => false,
-                'data'          => 'Select bundles, domains and locales'
+                'mapped'                => false,
+                'data'                  => 'str.form.save.step1.label'
             )
         );
 
@@ -151,12 +152,12 @@ class SaveForm extends AbstractType
             'bundles',
             'choice',
             array(
-                'label'         => 'Bundles',
-                'expanded'      => true,
-                'multiple'      => true,
-                'choices'       => array_combine($bundles, $bundles),
-                'constraints'   => new NotBlank(array(
-                    'message'       => 'You must select at least one bundle!'
+                'label'                 => 'str.label.bundles',
+                'expanded'              => true,
+                'multiple'              => true,
+                'choices'               => array_combine($bundles, $bundles),
+                'constraints'           => new NotBlank(array(
+                    'message'               => 'str.form.save.step1.error.bundles'
                 ))
             )
         );
@@ -165,12 +166,12 @@ class SaveForm extends AbstractType
             'domains',
             'choice',
             array(
-                'label'         => 'Domains',
-                'expanded'      => true,
-                'multiple'      => true,
-                'choices'       => array_combine($domains, $domains),
-                'constraints'   => new NotBlank(array(
-                    'message'       => 'You must select at least one domain!'
+                'label'                 => 'str.label.domains',
+                'expanded'              => true,
+                'multiple'              => true,
+                'choices'               => array_combine($domains, $domains),
+                'constraints'           => new NotBlank(array(
+                    'message'               => 'str.form.save.step1.error.domains'
                 ))
             )
         );
@@ -179,12 +180,12 @@ class SaveForm extends AbstractType
             'locales',
             'choice',
             array(
-                'label'         => 'Locales',
-                'expanded'      => true,
-                'multiple'      => true,
-                'choices'       => array_combine($locales, $locales),
-                'constraints'   => new NotBlank(array(
-                    'message'       => 'You must select at least one locale!'
+                'label'                 => 'str.label.locales',
+                'expanded'              => true,
+                'multiple'              => true,
+                'choices'               => array_combine($locales, $locales),
+                'constraints'           => new NotBlank(array(
+                    'message'               => 'str.form.save.step1.error.locales'
                 ))
             )
         );
@@ -193,7 +194,7 @@ class SaveForm extends AbstractType
             'submit',
             'submit',
             array(
-                'label'         => 'Save'
+                'label'                 => 'str.action.save'
             )
         );
     }
@@ -213,8 +214,8 @@ class SaveForm extends AbstractType
             '_label',
             'hidden',
             array(
-                'mapped'        => false,
-                'data'          => 'Confirm the output files'
+                'mapped'                => false,
+                'data'                  => 'str.form.save.step2.label'
             )
         );
 
@@ -222,8 +223,8 @@ class SaveForm extends AbstractType
             '_info',
             'hidden',
             array(
-                'mapped'        => false,
-                'data'          => 'The folders of this files must have write permissions!'
+                'mapped'                => false,
+                'data'                  => 'str.form.save.step2.info'
             )
         );
 
@@ -231,8 +232,8 @@ class SaveForm extends AbstractType
             '_bundles',
             'hidden',
             array(
-                'mapped'        => false,
-                'data'          => implode('|', $data['bundles'])
+                'mapped'                => false,
+                'data'                  => implode('|', $data['bundles'])
             )
         );
 
@@ -240,8 +241,8 @@ class SaveForm extends AbstractType
             '_domains',
             'hidden',
             array(
-                'mapped'        => false,
-                'data'          => implode('|', $data['domains'])
+                'mapped'                => false,
+                'data'                  => implode('|', $data['domains'])
             )
         );
 
@@ -249,8 +250,8 @@ class SaveForm extends AbstractType
             '_locales',
             'hidden',
             array(
-                'mapped'        => false,
-                'data'          => implode('|', $data['locales'])
+                'mapped'                => false,
+                'data'                  => implode('|', $data['locales'])
             )
         );
 
@@ -258,12 +259,12 @@ class SaveForm extends AbstractType
             'files',
             'choice',
             array(
-                'label'         => 'Files',
-                'expanded'      => true,
-                'multiple'      => true,
-                'choices'       => $files,
-                'constraints'   => new NotBlank(array(
-                    'message'       => 'You must select at least one file!'
+                'label'                 => 'str.label.files',
+                'expanded'              => true,
+                'multiple'              => true,
+                'choices'               => $files,
+                'constraints'           => new NotBlank(array(
+                    'message'               => 'str.form.save.step2.error.files'
                 ))
             )
         );
@@ -272,7 +273,7 @@ class SaveForm extends AbstractType
             'submit',
             'submit',
             array(
-                'label'         => 'Save'
+                'label'                 => 'str.action.save'
             )
         );
     }
@@ -292,8 +293,8 @@ class SaveForm extends AbstractType
             '_label',
             'hidden',
             array(
-                'mapped' => false,
-                'data'   => 'Result'
+                'mapped'                => false,
+                'data'                  => 'str.form.save.step3.label'
             )
         );
 
@@ -303,8 +304,7 @@ class SaveForm extends AbstractType
         foreach ($result as $item) {
             if ($item['result']) {
                 $success[] = $item['filename'];
-            }
-            else {
+            } else {
                 $errors[] = $item['message'];
             }
         }
@@ -314,19 +314,18 @@ class SaveForm extends AbstractType
                 '_error',
                 'hidden',
                 array(
-                    'mapped' => false,
-                    'data'   => 'The process ended with no result!'
+                    'mapped'            => false,
+                    'data'              => 'str.form.save.step3.error'
                 )
             );
-        }
-        else {
+        } else {
             if (!empty($success)) {
                 $form->add(
                     '_success',
                     'hidden',
                     array(
-                        'mapped' => false,
-                        'data'   => count($success) . ' file(s) saved!'
+                        'mapped'            => false,
+                        'data'              => 'str.form.save.step3.success',
                     )
                 );
             }
@@ -336,8 +335,8 @@ class SaveForm extends AbstractType
                     '_errors',
                     'hidden',
                     array(
-                        'mapped' => false,
-                        'data'   => implode('|', $errors)
+                        'mapped'            => false,
+                        'data'              => implode('|', $errors)
                     )
                 );
             }

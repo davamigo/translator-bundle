@@ -5,7 +5,9 @@
  # form Form
  #}
 
-{% form_theme form "bootstrap_3_layout.html.twig" %}
+{% form_theme form "@DavamigoTranslator/Default/layout.html.twig" %}
+
+{% trans_default_domain 'DavamigoTranslatorBundle' %}
 
 <div role="dialog"
      tabindex="-1"
@@ -19,8 +21,8 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span title="{{ 'str.global.buttons.close' | trans }}" aria-hidden="true">
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'str.action.close' | trans }}">
+                    <span title="{{ 'str.action.close' | trans }}" aria-hidden="true">
                         &times;
                     </span>
                 </button>
@@ -30,7 +32,7 @@
                 {% elseif form._label is defined and form._label.vars.data is not null %}
                     {% set label = form._label.vars.data %}
                 {% else %}
-                    {% set label = 'Modal' %}
+                    {% set label = 'str.label.dialog' %}
                 {% endif %}
 
                 <h4 class="modal-title" id="{{ form.vars.id }}-label">
@@ -81,7 +83,7 @@
             <div class="modal-footer">
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    {{- 'str.global.buttons.close' | trans -}}
+                    {{- 'str.action.close' | trans -}}
                 </button>
 
                 {% if form.submit is defined %}

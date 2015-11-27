@@ -55,14 +55,20 @@
                         filter = $header.data('filter'),
                         locale = $header.data('locale'),
                         columnId = $header.data('column-id'),
+                        placeholder = $header.data('placeholder'),
                         $filterCell = $('.js-column-' + columnId, $table);
 
                     switch (filter) {
 
                         case 'select': {
 
-                            var $select = $('<select class="form-control input-sm"><option value=""></option></select>')
-                                .appendTo($filterCell.empty())
+                            var $select = $(
+                                '<select class="form-control input-sm datatable-filter">' +
+                                '<option value="">' + placeholder + '</option>' +
+                                '</select>'
+                            );
+
+                            $select.appendTo($filterCell.empty())
                                 .on('change', function() {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
@@ -82,8 +88,13 @@
 
                         case 'input': {
 
-                            var $input = $('<input type="text" class="form-control input-sm" />')
-                                .appendTo($filterCell.empty())
+                            var $input = $(
+                                '<input type="text" ' +
+                                'placeholder="' + placeholder + '"' +
+                                'class="form-control input-sm datatable-filter" />'
+                            );
+
+                            $input.appendTo($filterCell.empty())
                                 .on('keyup change', function() {
                                     column.search(this.value).draw();
                                 });

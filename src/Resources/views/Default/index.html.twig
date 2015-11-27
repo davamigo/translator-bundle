@@ -7,8 +7,10 @@
 
 {% extends '@DavamigoTranslator/base.html.twig' %}
 
+{% trans_default_domain 'DavamigoTranslatorBundle' %}
+
 {% block title %}
-    Symfony Translations - Davamigo
+    {{ 'str.bundle.name' | trans }}
 {% endblock %}
 
 {%- block container_class %}
@@ -23,7 +25,7 @@
                 <div class="btn-group">
                     <div class="btn-group">
                         <a  href="#"
-                            title="Download"
+                            title="{{ 'str.action.download' | trans }}"
                             data-toggle="dropdown"
                             class="btn btn-default btn-sm dropdown-toggle js-btn-download">
                             <span class="fa fa-download"></span>
@@ -31,29 +33,29 @@
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a target="_blank" href="{{ path('translator_export_excel') }}">
-                                    Excel format
+                                    {{ 'str.format.excel' | trans }}
                                 </a>
                             </li>
                             <li>
                                 <a target="_blank" href="{{ path('translator_export_yaml') }}">
-                                    Yaml format
+                                    {{ 'str.format.yaml' | trans }}
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <a  href="#"
-                        title="Upload"
+                        title="{{ 'str.action.upload' | trans }}"
                         class="btn btn-default btn-sm js-btn-upload">
                         <span class="fa fa-upload"></span>
                     </a>
                     <a  href="#"
-                        title="Save"
+                        title="{{ 'str.action.save' | trans }}"
                         data-url="{{ path('translator_save_yaml') }}"
                         class="btn btn-default btn-sm js-btn-save">
                         <span class="fa fa-save"></span>
                     </a>
                     <a  href="{{ path('translator_reset') }}"
-                        title="Reset"
+                        title="{{ 'str.action.reset' | trans }}"
                         class="btn btn-default btn-sm js-btn-reset">
                         <span class="fa fa-recycle"></span>
                     </a>
@@ -75,7 +77,7 @@
         </div>
         <div class="col-sm-9 col-xs-12 text-right">
             <div class="form-group">
-                <label>Locales:</label>
+                <label>{{ 'str.label.locales' | trans }}:</label>
                 <div class="btn-group">
                     {% for locale in translations.locales %}
                         <a  href="#"
@@ -86,7 +88,7 @@
                         </a>
                     {% endfor %}
                     <a  href="#"
-                        title="Add locale"
+                        title="{{ 'str.action.add-locale' | trans }}"
                         class="btn btn-default btn-sm js-btn-locale-add">
                         <span class="fa fa-plus"></span>
                     </a>
@@ -104,9 +106,15 @@
                 class="table table-bordered table-hover table-condensed js-table">
                 <thead>
                     <tr class="warning">
-                        <td class="js-column-bundle">&nbsp;</td>
-                        <td class="js-column-domain">&nbsp;</td>
-                        <td class="js-column-resource">&nbsp;</td>
+                        <td class="js-column-bundle">
+                            &nbsp;
+                        </td>
+                        <td class="js-column-domain">
+                            &nbsp;
+                        </td>
+                        <td class="js-column-resource">
+                            &nbsp;
+                        </td>
                         {% for locale in translations.locales %}
                             <td class="js-column-locale-{{ locale }}">&nbsp;</td>
                         {% endfor %}
@@ -115,20 +123,23 @@
 
                         <th data-column-id="bundle"
                             data-order-data="[0, 1, 2]"
-                            data-filter="select">
-                            Bundle
+                            data-filter="select"
+                            data-placeholder="{{ 'str.placeholder.bundle' | trans }}">
+                            {{ 'str.label.bundle' | trans }}
                         </th>
 
                         <th data-column-id="domain"
                             data-order-data="[1, 0, 2]"
-                            data-filter="select">
-                            Domain
+                            data-filter="select"
+                            data-placeholder="{{ 'str.placeholder.domain' | trans }}">
+                            {{ 'str.label.domain' | trans }}
                         </th>
 
                         <th data-column-id="resource"
                             data-order-data="[2, 0, 1]"
-                            data-filter="input">
-                            Resource
+                            data-filter="input"
+                            data-placeholder="{{ 'str.placeholder.resource' | trans }}">
+                            {{ 'str.label.resource' | trans }}
                         </th>
 
                         {% for locale in translations.locales %}
@@ -146,6 +157,14 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block page_stylesheets %}
+    {% stylesheets filter='cssrewrite'
+        'bundles/davamigotranslator/css/default/index.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
 {% endblock %}
 
 {% block page_javascripts %}

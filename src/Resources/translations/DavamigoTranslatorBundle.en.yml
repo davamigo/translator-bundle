@@ -1,0 +1,50 @@
+str:
+    bundle:
+        name:                   "Symfony Translator"
+
+    action:
+        download:               "Download"
+        upload:                 "Upload"
+        save:                   "Save"
+        reset:                  "Reset"
+        add-locale:             "Add locale"
+        close:                  "Close"
+
+    format:
+        excel:                  "Excel format"
+        yaml:                   "Yaml format"
+
+    label:
+        bundle:                 "Bundle"
+        bundles:                "Bundles"
+        domain:                 "Domain"
+        domains:                "Domains"
+        resource:               "Resource"
+        locales:                "Locales"
+        dialog:                 "Dialog box"
+        files:                  "Files"
+
+    placeholder:
+        bundle:                 "Select a bundle..."
+        domain:                 "Select a domain..."
+        resource:               "Select a resource..."
+
+    form:
+        save:
+            step1:
+                label:          "Select bundles, domains and locales"
+                error:
+                    bundles:    "You must select at least one bundle!"
+                    domains:    "You must select at least one domain!"
+                    locales:    "You must select at least one locale!"
+
+            step2:
+                label:          "Confirm the output files"
+                info:           "The folders of this files must have write permissions!"
+                error:
+                    files:      "You must select at least one file!"
+
+            step3:
+                label:          "Result"
+                error:          "The process finished with errors!"
+                success:        "The process finished successful!"

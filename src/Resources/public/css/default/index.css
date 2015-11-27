@@ -1,0 +1,12 @@
+/**
+ * @file bundles/davamigotranslator/css/default/index.css
+ * @author davamigo@gmail.com
+ */
+
+.datatable-filter {
+    width: 100%;
+}
+
+select.datatable-filter option:first-child {
+    color: grey;
+}

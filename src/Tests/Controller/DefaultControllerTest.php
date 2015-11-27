@@ -49,7 +49,7 @@ class DefaultControllerTest extends WebTestCase
         $response = $this->client->getResponse();
         $this->assertTrue($response->isSuccessful());
 
-        $this->assertEquals(1, $crawler->filter('html:contains("Symfony Translations - Davamigo")')->count());
+        $this->assertEquals(1, $crawler->filter('html:contains("Symfony Translator")')->count());
         $this->assertEquals(1, $crawler->filter('a.js-btn-download')->count());
         $this->assertEquals(1, $crawler->filter('a.js-btn-upload')->count());
         $this->assertEquals(1, $crawler->filter('a.js-btn-save')->count());
