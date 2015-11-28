@@ -4,7 +4,7 @@
  */
 
 .datatable-filter {
-    width: 100%;
+    width: 100% !important;
 }
 
 select.datatable-filter option:first-child {
