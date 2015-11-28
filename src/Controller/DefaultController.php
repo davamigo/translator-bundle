@@ -4,8 +4,10 @@ namespace Davamigo\TranslatorBundle\Controller;
 
 use Davamigo\TranslatorBundle\Form\SaveForm;
 use Davamigo\TranslatorBundle\Model\Translator\FileCreatorInterface;
+use Davamigo\TranslatorBundle\Model\Translator\Session\SessionStorage;
 use Davamigo\TranslatorBundle\Model\Translator\Translations;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -23,8 +25,20 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
  */
 class DefaultController extends Controller
 {
-    /** Translation session key */
-    const SESSION_KEY = 'davamigo.translations';
+    /** @var string */
+    protected $sessionKey;
+
+    /**
+     * Sets the Container associated with this Controller.
+     *
+     * @param ContainerInterface $container A ContainerInterface instance
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        parent::setContainer($container);
+        $seed = substr(md5($this->get('kernel')->getRootDir()), 0, 8);
+        $this->sessionKey = SessionStorage::DEFAULT_KEY . '.' . $seed;
+    }
 
     /**
      * List of all of the resources and translations in the app
@@ -40,12 +54,12 @@ class DefaultController extends Controller
         $storage = $this->get('davamigo.translator.storage.session');
         $scanner = $this->get('davamigo.translator.scanner');
 
-        if ($storage->hasValid(static::SESSION_KEY)) {
-            $translations = $storage->load(static::SESSION_KEY);
+        if ($storage->hasValid($this->sessionKey)) {
+            $translations = $storage->load($this->sessionKey);
         }
         else {
             $translations = $scanner->scan()->sort();
-            $storage->save($translations, static::SESSION_KEY);
+            $storage->save($translations, $this->sessionKey);
         }
 
         return array(
@@ -65,8 +79,8 @@ class DefaultController extends Controller
         $translations = null;
 
         $storage = $this->get('davamigo.translator.storage.session');
-        if ($storage->hasValid(static::SESSION_KEY)) {
-            $translations = $storage->load(static::SESSION_KEY);
+        if ($storage->hasValid($this->sessionKey)) {
+            $translations = $storage->load($this->sessionKey);
         }
 
         $excelService = $this->get('davamigo.translator.exporter.excel');
@@ -87,8 +101,8 @@ class DefaultController extends Controller
         $translations = null;
 
         $storage = $this->get('davamigo.translator.storage.session');
-        if ($storage->hasValid(static::SESSION_KEY)) {
-            $translations = $storage->load(static::SESSION_KEY);
+        if ($storage->hasValid($this->sessionKey)) {
+            $translations = $storage->load($this->sessionKey);
         }
 
         $yamlService = $this->get('davamigo.translator.exporter.yaml');
@@ -134,8 +148,8 @@ class DefaultController extends Controller
         }
 
         // Get the current translations
-        if ($storage->hasValid(static::SESSION_KEY)) {
-            $translations = $storage->load(static::SESSION_KEY);
+        if ($storage->hasValid($this->sessionKey)) {
+            $translations = $storage->load($this->sessionKey);
         }
         else {
             $translations = $scanner->scan()->sort();
@@ -153,7 +167,7 @@ class DefaultController extends Controller
             $flashBag->add('info', $message);
 
             $translations->sort();
-            $storage->save($translations, static::SESSION_KEY);
+            $storage->save($translations, $this->sessionKey);
         }
         catch (\Exception $exc) {
             $flashBag->add('danger', $exc->getMessage());
@@ -177,8 +191,8 @@ class DefaultController extends Controller
         $translations = null;
 
         $storage = $this->get('davamigo.translator.storage.session');
-        if ($storage->hasValid(static::SESSION_KEY)) {
-            $translations = $storage->load(static::SESSION_KEY);
+        if ($storage->hasValid($this->sessionKey)) {
+            $translations = $storage->load($this->sessionKey);
         }
 
         $bundles = $translations->getBundles();
@@ -328,7 +342,7 @@ class DefaultController extends Controller
         $scanner = $this->get('davamigo.translator.scanner');
 
         $translations = $scanner->scan()->sort();
-        $storage->save($translations, static::SESSION_KEY);
+        $storage->save($translations, $this->sessionKey);
 
         return $this->redirectToRoute('translator_index');
     }
@@ -347,8 +361,8 @@ class DefaultController extends Controller
         $data = array();
 
         $storage = $this->get('davamigo.translator.storage.session');
-        if ($storage->hasValid(static::SESSION_KEY)) {
-            $translations = $storage->load(static::SESSION_KEY);
+        if ($storage->hasValid($this->sessionKey)) {
+            $translations = $storage->load($this->sessionKey);
         }
 
         if (null !== $translations) {
