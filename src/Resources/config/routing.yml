@@ -3,4 +3,3 @@
 davamigo_translator_routes:
     resource: "@DavamigoTranslatorBundle/Controller/"
     type:     annotation
-    prefix:   /translator
