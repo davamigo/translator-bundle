@@ -2,16 +2,16 @@
 <phpunit
     colors="true"
     syntaxCheck="true"
-    bootstrap="src/Tests/bootstrap.php">
+    bootstrap="Tests/bootstrap.php">
     <testsuites>
         <testsuite name="Translator-bundle Test Suite">
-            <directory suffix="Test.php">./src/Tests</directory>
-            <exclude>./src/Tests/Controller</exclude>
+            <directory suffix="Test.php">./Tests</directory>
+            <exclude>./Tests/Controller</exclude>
         </testsuite>
     </testsuites>
 
     <php>
-        <!--<server name="KERNEL_DIR" value="src/Tests/app" />-->
+        <!--<server name="KERNEL_DIR" value="Tests/app" />-->
         <ini name="error_reporting" value="-1" />
         <ini name="memory_limit" value="-1" />
     </php>
