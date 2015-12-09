@@ -2,6 +2,7 @@
 
 namespace Davamigo\TranslatorBundle\Tests\Controller;
 
+use Davamigo\TranslatorBundle\Model\Translator\Session\SessionStorage;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -204,8 +205,12 @@ class DefaultControllerTest extends WebTestCase
         $translations = $scanner->scan()->sort();
         $this->assertNotNull($translations);
 
+        $kernel = $this->container->get('kernel');
+        $seed = substr(md5($kernel->getRootDir()), 0, 8);
+        $sessionKey = SessionStorage::DEFAULT_KEY . '.' . $seed;
+
         $storage = $this->container->get('davamigo.translator.storage.session');
-        $result = $storage->save($translations);
+        $result = $storage->save($translations, $sessionKey);
         $this->assertTrue($result);
 
         return $this;
